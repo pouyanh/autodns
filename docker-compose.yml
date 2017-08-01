@@ -3,7 +3,7 @@ services:
   dns:
     restart: always
     image: andyshinn/dnsmasq:latest
-    command: --hostsdir=/etc/dnsmasq.d --user=root --no-ping
+    command: --hostsdir=/etc/dnsmasq.d --user=root --no-ping --clear-on-reload
     volumes:
       - dnsmasq.d:/etc/dnsmasq.d
     ports:
@@ -14,8 +14,10 @@ services:
 
   dnsmasq-conf:
     restart: always
+    depends_on:
+      - dns
     image: jwilder/docker-gen:latest
-    command: -notify-sighup portfolio_dns_1 -watch -wait 500ms:2s /etc/docker-gen/dnsmasq.tpl /etc/dnsmasq.d/default
+    command: -notify-sighup dns_dns_1 -watch -wait 500ms:2s /etc/docker-gen/dnsmasq.tpl /etc/dnsmasq.d/default
     volumes:
       - dnsmasq.d:/etc/dnsmasq.d
       - /var/run/docker.sock:/tmp/docker.sock:ro
