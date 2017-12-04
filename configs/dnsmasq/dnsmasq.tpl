@@ -2,7 +2,7 @@
 {{range $hostname, $containers := groupByMulti . "Env.HOSTNAME" ","}}
 {{range $key, $container := $containers}}
 {{$number := (index $container.Labels "com.docker.compose.container-number")}}
-{{if eq $number "1"}}
+{{if (or (eq $number "1") (not $number))}}
 {{with index $container.Networks 0}}{{.IP}}{{end}} {{$hostname}}
 {{else}}
 {{with index $container.Networks 0}}{{.IP}}{{end}} {{range $i, $part := (split $hostname ".")}}{{if $i}}.{{end}}{{if $i}}{{$part}}{{else}}{{(printf "%s-%s" $part $number)}}{{end}}{{end}}
