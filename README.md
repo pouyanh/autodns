@@ -1,4 +1,4 @@
-# Janstun Docker DNS
+# Janstun Docker Automatic DNS and Load Balance Solution
 Lets you to access your running docker containers using a domain name instead of container's ip address
 
 ## Setup
