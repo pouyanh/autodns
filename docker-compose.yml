@@ -10,7 +10,7 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
     cap_add:
-      - NET_ADMIN
+      - NET_BIND_SERVICE
 
   dnsmasq-conf:
     restart: always

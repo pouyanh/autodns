@@ -1,0 +1,6 @@
+version: '3'
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.22.26.32/27
