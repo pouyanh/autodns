@@ -1,7 +1,27 @@
-.DS_Store
-.idea/
+# IDEs and editors
+/.idea
 *.iml
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*~
 
-.persist
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
+# System Files
+.DS_Store
+Thumbs.db
+
+# Docker
 docker-compose.override.yml
+
+# Database
+/.persist
