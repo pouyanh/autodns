@@ -1,4 +1,9 @@
 version: '3'
+services:
+  dnsmasq-conf:
+    environment:
+      HOST_IP: 172.22.26.1
+
 networks:
   default:
     ipam:

@@ -2,10 +2,11 @@
 Lets you to access your running docker containers using a domain name instead of container's ip address. Automatically balances load between scaled containers using haproxy
 
 ## Setup
-1. Set primary dns server to docker (172.17.0.1) using system preferences or writing to one of files described below:
+1. Set primary dns server to docker0 IP address (default: 172.17.0.1) using system preferences or writing to one of files described below:
   * /etc/resolvconf.conf: name_servers=172.17.0.1
   * /etc/resolv.conf: nameserver 172.17.0.1
-2. Run containers: ```docker-compose up -d```
+2. If IP address of docker0 differs from default, you can pass it to *dnsmasq-conf* docker container by setting *HOST_IP* environment variable in a *docker-compose.override.yml* file. An example is given in *docker-compose.override.yml.sample*
+3. Run containers: ```docker-compose up -d```
 
 ## Usage
 Set *HOSTNAME* environment variable on your container:
