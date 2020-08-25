@@ -6,6 +6,9 @@ services:
     command: --hostsdir=/etc/dnsmasq.d --user=root --no-ping --clear-on-reload
     volumes:
       - dnsmasq.d:/etc/dnsmasq.d
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
     cap_add:
       - NET_BIND_SERVICE
 

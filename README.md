@@ -2,12 +2,17 @@
 Lets you to access your running docker containers using a domain name instead of container's ip address. Automatically balances load between scaled containers using haproxy
 
 ## Setup
-1. Set primary dns server to docker0 IP address (default: 172.17.0.1) using system preferences or writing to one of files described below:
+1. Customize environment by creating a *docker-compose.override.yml* file (Sample override file is available as *docker-compose.override.yml.sample*):
+  * Check your docker daemon's ip address (default: 172.17.0.1):
+    ```bash
+      ip addr show docker0 | grep inet
+    ```
+  * If docker daemon's ip address differs from default, you have set it in *dnsmasq-conf* docker container's *HOST_IP* environment variable
+  * DNS service automatically binds to port 53 on all interfaces. If this port on your host is already in-use (maybe because of having another running dns server) you can change autodns bridge network's default bind ip address from 0.0.0.0 (all interfaces) to your docker0 interface ip address by setting **com.docker.network.bridge.host_binding_ipv4** in *networks.default.driver_opts*
+2. Run containers: ```docker-compose up -d```
+3. Set primary dns server to docker0 IP address using system preferences or writing to one of files described below:
       * /etc/resolvconf.conf: name_servers=172.17.0.1
       * /etc/resolv.conf: nameserver 172.17.0.1 
-2. in a *docker-compose.override.yml* file you should override dns service ip ports based on your docker0 IP address. An example is given in docker-compose.override.yml.sample  
-3. If IP address of docker0 differs from default, you can pass it to *dnsmasq-conf* docker container by setting *HOST_IP* environment variable in a *docker-compose.override.yml* file. An example is given in *docker-compose.override.yml.sample*
-4. Run containers: ```docker-compose up -d```
 
 ## Usage
 Set *HOSTNAME* environment variable on your container:
@@ -26,4 +31,4 @@ docker exec autodns_dns_1 cat /etc/dnsmasq.d/default
 docker exec autodns_haproxy_1 cat /usr/local/etc/haproxy/haproxy.cfg
 ```
 
-Visit http://haproxy.local:8181/haproxy?stats to see haproxy statistics
+Visit http://haproxy.local/haproxy?stats to see haproxy statistics

@@ -4,14 +4,10 @@ services:
     environment:
       HOST_IP: 172.22.26.1
 
-  # in ports override IP address of docker0 based on your local machine IP.
-   dns:
-      ports:
-        - "172.17.0.1:53:53/tcp"
-        - "172.17.0.1:53:53/udp"
-
 networks:
   default:
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "172.22.26.1"
     ipam:
       config:
         - subnet: 172.22.26.32/27
