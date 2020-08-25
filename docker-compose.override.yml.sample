@@ -6,16 +6,9 @@ services:
 
   # in ports override IP address of docker0 based on your local machine IP.
    dns:
-      restart: always
-      image: andyshinn/dnsmasq:latest
-      command: --hostsdir=/etc/dnsmasq.d --user=root --no-ping --clear-on-reload
-      volumes:
-        - dnsmasq.d:/etc/dnsmasq.d
       ports:
         - "172.17.0.1:53:53/tcp"
         - "172.17.0.1:53:53/udp"
-      cap_add:
-        - NET_BIND_SERVICE
 
 networks:
   default:
