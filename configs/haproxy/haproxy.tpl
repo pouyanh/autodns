@@ -24,7 +24,7 @@ defaults
 
 frontend stats
         mode http
-        bind 0.0.0.0:8181
+        bind *:80
         default_backend stats
 
 frontend http-in
