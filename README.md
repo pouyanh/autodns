@@ -34,7 +34,7 @@ Your container is accessible by value of *HOSTNAME*
 ```bash
 docker exec autodns-dns-1 cat /etc/dnsmasq.d/default
 ```
-.
+
 ## Retrieve haproxy live configuration
 ```bash
 docker exec autodns-haproxy-1 cat /usr/local/etc/haproxy/haproxy.cfg
