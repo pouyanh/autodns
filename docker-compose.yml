@@ -17,7 +17,7 @@ services:
     depends_on:
       - dns
     image: jwilder/docker-gen:latest
-    command: -notify-sighup autodns_dns_1 -watch -wait 500ms:2s /etc/docker-gen/dnsmasq.tpl /etc/dnsmasq.d/default
+    command: -notify-sighup autodns-dns-1 -watch -wait 500ms:2s /etc/docker-gen/dnsmasq.tpl /etc/dnsmasq.d/default
     volumes:
       - dnsmasq.d:/etc/dnsmasq.d
       - /var/run/docker.sock:/tmp/docker.sock:ro
@@ -38,7 +38,7 @@ services:
     depends_on:
       - haproxy
     image: jwilder/docker-gen:latest
-    command: -notify-sighup autodns_haproxy_1 -watch -wait 500ms:2s /etc/docker-gen/haproxy.tpl /usr/local/etc/haproxy/haproxy.cfg
+    command: -notify-sighup autodns-haproxy-1 -watch -wait 500ms:2s /etc/docker-gen/haproxy.tpl /usr/local/etc/haproxy/haproxy.cfg
     volumes:
       - haproxy:/usr/local/etc/haproxy
       - /var/run/docker.sock:/tmp/docker.sock:ro

@@ -32,12 +32,12 @@ Your container is accessible by value of *HOSTNAME*
 
 ## Retrieve list of DNS records
 ```bash
-docker exec autodns_dns_1 cat /etc/dnsmasq.d/default
+docker exec autodns-dns-1 cat /etc/dnsmasq.d/default
 ```
 .
 ## Retrieve haproxy live configuration
 ```bash
-docker exec autodns_haproxy_1 cat /usr/local/etc/haproxy/haproxy.cfg
+docker exec autodns-haproxy-1 cat /usr/local/etc/haproxy/haproxy.cfg
 ```
 
 Visit http://haproxy.local/haproxy?stats to see haproxy statistics
