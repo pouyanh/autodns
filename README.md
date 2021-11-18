@@ -44,8 +44,8 @@ containers using haproxy. No docker network sharing or containers linkage requir
    Either *dnsmasq* service binds to port 53 of all interfaces, *INADDR_ANY*, or just the docker0 interface it's almost
    reachable from docker0 interface ip address (step 0). Considering customizations in step 1, if bridge network's
    binding ip address is something different from
-   *INADDR_ANY* or docker0 interface ip address you have to know it. Anyway let's name it **
-   AUTODNS_DNS_SERVER_IP_ADDRESS**.
+   *INADDR_ANY* or docker0 interface ip address you have to know it.
+   Anyway let's name it **AUTODNS_DNS_SERVER_IP_ADDRESS**.
 
    On linux there are several ways to specify dns servers manually. It's important to make sure that autodns having the
    highest priority in list of dns servers, i.e., it should be the primary dns server.
