@@ -3,7 +3,7 @@ services:
   dns:
     restart: always
     image: 4km3/dnsmasq:latest
-    command: --hostsdir=/etc/dnsmasq.d --user=root --dns-forward-max=1500 --no-ping --clear-on-reload --log-queries --log-facility=-
+    command: --no-resolv --hostsdir=/etc/dnsmasq.d --user=root --no-negcache --no-ping --clear-on-reload --log-queries --log-facility=-
     volumes:
       - dnsmasq.d:/etc/dnsmasq.d
     ports:
